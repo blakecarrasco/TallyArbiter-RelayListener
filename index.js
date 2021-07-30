@@ -199,6 +199,7 @@ function ProcessTallyData() {
 		if (getBusTypeById(device_states[i].busId) === 'preview') {
 			if (device_states[i].sources.length > 0) {
 				UpdateRelay(device_states[i].deviceId, 'preview', true);
+				logger(`PREVIEW signal received from: ${device_states[i].busId} `);
 			}
 			else {
 				UpdateRelay(device_states[i].deviceId, 'preview', false);
@@ -207,6 +208,7 @@ function ProcessTallyData() {
 		else if (getBusTypeById(device_states[i].busId) === 'program') {
 			if (device_states[i].sources.length > 0) {
 				UpdateRelay(device_states[i].deviceId, 'program', true);
+				logger(`PROGRAM signal received from: ${device_states[i].busId} `);
 			}
 			else {
 				UpdateRelay(device_states[i].deviceId, 'program', false);
@@ -214,6 +216,7 @@ function ProcessTallyData() {
 		}
 	}
 }
+
 
 function UpdateRelay(deviceId, bus, value) {
 	if (relay !== null) {
